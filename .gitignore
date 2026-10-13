@@ -3,3 +3,4 @@ salidas/*.md
 .DS_Store
 .claude/settings.local.json
 __pycache__/
+salidas/*.log

@@ -21,6 +21,7 @@ body{color:var(--tinta);font-family:-apple-system,"SF Pro Display","Helvetica Ne
 .logo i{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#fff,#8a8a92);display:block}
 .pill{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 15px;border-radius:999px;font-size:14px;font-weight:500;white-space:nowrap}
 .pill.blanca{background:#fff;color:#000}
+.boton{cursor:pointer;transition:transform .15s}.boton:hover{transform:translateY(-1px)}
 .pill.oscura{background:#1a1a1d;color:var(--tinta);border:1px solid #26262a}
 .vivo{width:8px;height:8px;border-radius:50%;background:var(--mal);box-shadow:0 0 10px var(--mal);animation:late 1.2s infinite}
 .vivo.ok{background:var(--ok);box-shadow:0 0 10px var(--ok);animation:none}
@@ -210,7 +211,8 @@ main{flex:1;min-height:0;display:grid;gap:10px;padding:10px 26px 8px;grid-templa
   <div class="txt">
     <h1>Cinco agentes para todo<br>lo que tú <span class="palabra" id="palabra">atiendes</span><span class="cursor"></span></h1>
     <div class="acciones" id="acciones">
-      <span class="pill blanca mono">/arranca ›</span>
+      <span class="pill blanca boton" onclick="arrancar('terminal')">▶&nbsp; Arrancar <span class="mono" style="opacity:.5">Enter</span></span>
+      <span class="pill oscura boton" onclick="arrancar('fondo')">Sin terminal <span class="mono" style="opacity:.5">S</span></span>
       <span class="pill oscura">Martes 9:00 a. m. · 5 encargos</span>
     </div>
   </div>
@@ -226,7 +228,7 @@ main{flex:1;min-height:0;display:grid;gap:10px;padding:10px 26px 8px;grid-templa
   <div><b id="k3">US$0.00</b><span>dólares de costo (USD)</span></div>
   <div><b id="k4">0</b><span>decisiones para ti</span></div>
 </section>
-<div class="teclas">1–5 abrir · A aprobar · F documento · I impacto · Esc · B plan B</div>
+<div class="teclas">Enter arrancar · S sin terminal · P pantalla completa · 1–5 abrir · A aprobar · F documento · I impacto · R reiniciar · B plan B</div>
 <div class="velo" id="velo"><article class="hoja" id="hoja"></article></div>
 <section class="impacto" id="impacto"></section>
 
@@ -243,6 +245,7 @@ const img = (id, px) => id ? `<img class="cara" src="/avatares/${id}.jpg" width=
 const PROSPECTOS = [["Rodrigo", "rodrigo"], ["Ana Lucía", "analucia"], ["Jorge", "jorge"], ["Laura", "laura"], ["Daniel", "daniel"], ["Sofía", "sofia"], ["Héctor", "hector"], ["Patricia", "patricia"]];
 const CFDI = [["01", "Nube Norte", "$9,860"], ["02", "Papelería Los Arcos", "$1,450"], ["03", "Torre Ceibas · renta", "$20,880"], ["04", "Enlace Total", "$2,563"], ["05", "Limpieza Brillo", "$3,712"], ["06", "Papelería Los Arcos", "$1,450"]];
 
+let ultimoInicio = undefined, pidiendo = false;
 let estado = null, abierta = -1, replayInicio = null, planB = false, fin = null, completo = false, impactoVisto = false;
 const pintado = {};
 const $ = (id) => document.getElementById(id);
@@ -392,7 +395,8 @@ function actualizar(t) {
   $("reloj").textContent = mmss(t === null ? 0 : (fin ?? t));
   $("relojEt").textContent = listos === 5 ? "terminaron" : t === null ? "tiempo" : `${listos} de 5 listos`;
   orbe.velocidad = t === null ? 0.25 : listos === 5 ? 0.35 : 1.6;
-  if (t === null) { $("modo").textContent = estado.modo === "respaldo" ? "Corrida grabada · Enter para arrancar" : "Listo para el encargo"; $("punto").className = "vivo ok"; $("acciones").style.display = ""; cifras(false); }
+  if (t === null && (estado.arrancando || pidiendo)) { $("modo").textContent = "Arrancando a los 5 agentes…"; $("punto").className = "vivo"; $("acciones").style.display = "none"; orbe.velocidad = 1.2; cifras(false); }
+  else if (t === null) { $("modo").textContent = estado.modo === "respaldo" ? "Corrida grabada · Enter para arrancar" : "Listo · Enter para arrancar"; $("punto").className = "vivo ok"; $("acciones").style.display = ""; cifras(false); }
   else if (listos < 5) { $("modo").textContent = "En vivo · trabajan en paralelo"; $("punto").className = "vivo"; $("acciones").style.display = "none"; cifras(false); }
   else {
     $("modo").textContent = "Terminado · abre cada entrega con 1–5"; $("punto").className = "vivo ok"; $("acciones").style.display = "none"; cifras(true, fin, decis);
@@ -538,13 +542,25 @@ document.addEventListener("keydown", (e) => {
   else if (k === "escape") { cerrar(); cerrarImpacto(); }
   else if (k === "a" && abierta >= 0) aprobar();
   else if ((k === "f" || k === "d") && abierta >= 0) documento();
+  else if (k === "p") { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(() => {}); }
   else if (k === "i") { if ($("impacto").classList.contains("ver")) cerrarImpacto(); else mostrarImpacto(); }
   else if (k === "arrowright" && abierta >= 0) abrir((abierta + 1) % 5);
   else if (k === "arrowleft" && abierta >= 0) abrir((abierta + 4) % 5);
   else if (k === "b" && !planB) { planB = true; estado = null; replayInicio = null; fin = null; cerrar(); cerrarImpacto(); }
+  else if (estado && estado.modo === "vivo" && k === "enter" && abierta < 0) arrancar("terminal");
+  else if (estado && estado.modo === "vivo" && k === "s" && abierta < 0) arrancar("fondo");
+  else if (estado && estado.modo === "vivo" && k === "r") { pidiendo = false; post("/reiniciar"); }
   else if (estado && estado.modo === "respaldo" && (k === "enter" || k === " ") && abierta < 0) { replayInicio = performance.now(); fin = null; cerrarImpacto(); pintarCartas(); }
   else if (estado && estado.modo === "respaldo" && k === "r") { replayInicio = null; fin = null; cerrar(); cerrarImpacto(); pintarCartas(); actualizar(null); }
 });
+
+function post(ruta) { return fetch(ruta, { method: "POST", headers: { "X-Tablero": "1" } }).catch(() => {}); }
+function arrancar(modo) {
+  if (!estado || estado.modo !== "vivo" || estado.inicio || pidiendo) return;
+  pidiendo = true;
+  post("/arrancar" + (modo === "fondo" ? "?fondo" : ""));
+  setTimeout(() => { pidiendo = false; }, 90000);  // si no arrancó en 90 s, se puede volver a intentar
+}
 
 async function ciclo() {
   try {
@@ -561,7 +577,14 @@ async function ciclo() {
       if (/impacto/.test(location.hash)) setTimeout(mostrarImpacto, 1500);
     }
     if (estado.modo === "respaldo") actualizar(replayInicio === null ? null : (performance.now() - replayInicio) / 1000);
-    else { if (!estado.inicio) fin = null; actualizar(estado.transcurrido); }
+    else {
+      if (estado.inicio !== ultimoInicio) {  // corrida nueva o tablero en cero: se repintan las tarjetas
+        if (ultimoInicio !== undefined) { fin = null; impactoVisto = false; cerrar(); cerrarImpacto(); pintarCartas(); }
+        ultimoInicio = estado.inicio;
+        if (estado.inicio) pidiendo = false;
+      }
+      actualizar(estado.transcurrido);
+    }
   } catch (e) { /* el servidor se reinicia: lo intentamos de nuevo */ }
   setTimeout(ciclo, 300);
 }

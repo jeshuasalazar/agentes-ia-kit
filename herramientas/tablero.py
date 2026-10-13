@@ -7,9 +7,14 @@ Uso:
                                                (en vivo también: tecla B en el tablero)
   python3 herramientas/tablero.py --grabar     guarda la última corrida (salidas/ + bitácora) en ejemplos/
 
+En vivo, el tablero arranca la corrida él mismo (Mac):
+  Enter  abre la Terminal en la mitad derecha con Claude Code ejecutando /arranca (se ve el trabajo de fondo)
+  S      corre /arranca sin terminal, en segundo plano
+  R      deja el tablero en cero para otra corrida
+
 Solo usa la biblioteca estándar de Python. Abre http://localhost:4322
 """
-import json, re, shutil, sys, time
+import json, re, shlex, shutil, subprocess, sys, time
 from datetime import datetime
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
@@ -22,6 +27,9 @@ PROYECTO = Path.home() / ".claude" / "projects" / re.sub(r"[^A-Za-z0-9]", "-", s
 PUERTO = 4322
 RESPALDO = "--respaldo" in sys.argv
 INICIO_SERVIDOR = time.time()
+DESDE = [INICIO_SERVIDOR]   # solo cuentan las corridas posteriores a este momento (R lo reinicia)
+ARRANCANDO = [None]         # cuándo se pidió la última corrida desde el tablero
+HERRAMIENTAS = ["Read", "Glob", "Grep", "Write(salidas/**)", "WebSearch", "WebFetch", "Agent"]
 
 AGENTES = [
     {"id": "atencion", "n": 1, "puesto": "Atención al cliente", "llego": "1 WhatsApp de una clienta nueva"},
@@ -104,7 +112,7 @@ def bitacora(sesion):
 
 
 def estado_vivo():
-    sesion, inicio = sesion_arranca(INICIO_SERVIDOR)
+    sesion, inicio = sesion_arranca(DESDE[0])
     log = bitacora(sesion) if sesion else {}
     agentes = []
     for a in AGENTES:
@@ -116,7 +124,7 @@ def estado_vivo():
             md = f.read_text(encoding="utf-8")
         agentes.append({**a, "acciones": [[t - inicio, x] for t, x in log.get(a["id"], []) if t and inicio],
                         "listo": (listo - inicio) if listo else None, "md": md})
-    return {"modo": "vivo", "inicio": inicio, "ahora": time.time(),
+    return {"modo": "vivo", "inicio": inicio, "ahora": time.time(), "arrancando": ARRANCANDO[0] is not None and not inicio,
             "transcurrido": (time.time() - inicio) if inicio else None, "agentes": agentes}
 
 
@@ -157,6 +165,50 @@ def grabar():
     print("Grabado en ejemplos/:", tiempos)
 
 
+def osa(script):
+    subprocess.run(["osascript", "-e", script], capture_output=True, timeout=20)
+
+
+def pantalla():
+    """Área útil de la pantalla principal (x, y, ancho, alto) en coordenadas de AppleScript."""
+    try:
+        r = subprocess.run(["osascript", "-l", "JavaScript", "-e",
+                            'ObjC.import("AppKit");var s=$.NSScreen.mainScreen,f=s.frame,v=s.visibleFrame;'
+                            '[v.origin.x,f.size.height-v.origin.y-v.size.height,v.size.width,v.size.height].join(",")'],
+                           capture_output=True, text=True, timeout=10)
+        x, y, w, h = (int(float(n)) for n in r.stdout.strip().split(","))
+        return x, y, w, h
+    except Exception:
+        return 0, 25, 1920, 1055
+
+
+def limpiar_salidas():
+    for f in SALIDAS.glob("*.md"):
+        f.rename(Path.home() / ".Trash" / f"{time.strftime('%H%M%S')}-{f.name}")
+
+
+def arrancar(modo):
+    """Arranca /arranca: con la Terminal a la derecha (se ve el trabajo) o en segundo plano."""
+    limpiar_salidas()
+    DESDE[0] = time.time()
+    ARRANCANDO[0] = time.time()
+    x, y, w, h = pantalla()
+    mitad = x + w // 2
+    if modo == "terminal":
+        orden = f"cd {shlex.quote(str(KIT))} && clear && claude --permission-mode acceptEdits /arranca"
+        # La Terminal en la mitad derecha (el tablero ya ocupa la izquierda).
+        osa(f'''tell application "Terminal"
+  activate
+  do script "{orden}"
+  delay 0.3
+  set bounds of front window to {{{mitad}, {y}, {x + w}, {y + h}}}
+end tell''')
+    else:
+        log = open(KIT / "salidas" / ".ultima-corrida.log", "w")
+        subprocess.Popen(["claude", "-p", "/arranca", "--allowedTools", *HERRAMIENTAS], cwd=KIT, stdout=log, stderr=log,
+                         start_new_session=True)
+
+
 class Manejador(BaseHTTPRequestHandler):
     def log_message(self, *a):
         pass
@@ -167,6 +219,18 @@ class Manejador(BaseHTTPRequestHandler):
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
         self.wfile.write(cuerpo)
+
+    def do_POST(self):
+        ruta = self.path.split("?")[0]
+        if self.headers.get("X-Tablero") != "1":   # solo el propio tablero puede pedir esto
+            self.send_response(403); self.end_headers(); return
+        if ruta == "/arrancar":
+            arrancar("fondo" if "fondo" in self.path else "terminal")
+        elif ruta == "/reiniciar":
+            limpiar_salidas(); DESDE[0] = time.time(); ARRANCANDO[0] = None
+        else:
+            self.send_response(404); self.end_headers(); return
+        self.enviar(b"{}", "application/json")
 
     def do_GET(self):
         ruta = self.path.split("?")[0]
