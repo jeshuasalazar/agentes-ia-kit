@@ -175,6 +175,10 @@ class Manejador(BaseHTTPRequestHandler):
             return self.enviar(json.dumps(e, ensure_ascii=False).encode(), "application/json; charset=utf-8")
         if ruta in ("/", "/index.html"):
             return self.enviar((HERR / "tablero.html").read_bytes(), "text/html; charset=utf-8")
+        if ruta.startswith("/avatares/") and ruta.endswith(".jpg"):
+            f = HERR / "avatares" / Path(ruta).name
+            if f.exists():
+                return self.enviar(f.read_bytes(), "image/jpeg")
         if ruta.startswith("/fuentes/") and ruta.endswith(".woff2"):
             f = HERR / "fuentes" / Path(ruta).name
             if f.exists():
