@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CFDI 4.0 de EJEMPLO para la demostración. Empresas, RFC y folios son ficticios. -->
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="4.0" Serie="PA" Folio="5521" Fecha="2026-10-10T12:40:00" SubTotal="1250.00" Moneda="MXN" Total="1450.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" FormaPago="03" LugarExpedicion="44100">
+  <cfdi:Emisor Rfc="PAR020611QW8" Nombre="PAPELERÍA LOS ARCOS" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="CCO140215AB3" Nombre="CEIBA CONTADORES" DomicilioFiscalReceptor="44100" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="81112500" Cantidad="1" ClaveUnidad="E48" Descripcion="Papelería y tóner para impresora" ValorUnitario="1250.00" Importe="1250.00" ObjetoImp="02">
+      <cfdi:Impuestos><cfdi:Traslados><cfdi:Traslado Base="1250.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="200.00"/></cfdi:Traslados></cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="200.00"><cfdi:Traslados><cfdi:Traslado Base="1250.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="200.00"/></cfdi:Traslados></cfdi:Impuestos>
+  <cfdi:Complemento><tfd:TimbreFiscalDigital Version="1.1" UUID="A41D7E02-58C3-4B9F-8E10-6D2F9A3B7C45" FechaTimbrado="2026-10-10T12:40:00"/></cfdi:Complemento>
+</cfdi:Comprobante>

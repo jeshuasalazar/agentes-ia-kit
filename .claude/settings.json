@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Write(salidas/**)",
+      "WebSearch",
+      "WebFetch"
+    ],
+    "ask": [
+      "Edit(CLAUDE.md)",
+      "Edit(.claude/**)",
+      "Bash"
+    ],
+    "deny": [
+      "Edit(negocio/**)",
+      "Write(negocio/**)",
+      "Edit(bandeja/**)",
+      "Write(bandeja/**)",
+      "Edit(crm/**)",
+      "Write(crm/**)",
+      "Bash(rm:*)",
+      "Bash(curl:*)",
+      "Read(./.env)"
+    ]
+  }
+}

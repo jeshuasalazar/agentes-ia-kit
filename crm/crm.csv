@@ -1,0 +1,5 @@
+id,empresa,contacto,etapa,valor_mensual_estimado,ultimo_contacto,siguiente_paso,fecha_siguiente_paso,notas
+101,Talleres Ibarra (ficticia),Rodrigo Ibarra,nuevo,,2026-10-12,Calificar,,Formulario web
+102,Café Altura (ficticia),Héctor Gómez,llamada inicial,,2026-10-12,Enviar propuesta,,Llamada 12-oct
+103,Panadería San Juan (ficticia),Elena Ruiz,propuesta enviada,3800,2026-10-02,Llamar para cerrar,2026-10-09,Sin respuesta
+104,Clínica Dental Salcedo (ficticia),Jorge Salcedo,nuevo,,2026-10-13,Calificar,,Formulario web

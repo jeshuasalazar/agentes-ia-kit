@@ -1,0 +1,152 @@
+{
+ "atencion": [
+  [
+   3.3,
+   "Abre whatsapp.md"
+  ],
+  [
+   3.6,
+   "Abre precios.md"
+  ],
+  [
+   4.0,
+   "Abre politicas.md"
+  ],
+  [
+   4.4,
+   "Abre agenda.md"
+  ],
+  [
+   4.4,
+   "Abre documentos.md"
+  ],
+  [
+   5.0,
+   "Abre manual.md"
+  ],
+  [
+   19.1,
+   "Escribe su entrega"
+  ]
+ ],
+ "prospectos": [
+  [
+   4.0,
+   "Abre manual.md"
+  ],
+  [
+   4.4,
+   "Abre precios.md"
+  ],
+  [
+   5.2,
+   "Abre agenda.md"
+  ],
+  [
+   5.2,
+   "Abre prospectos.csv"
+  ],
+  [
+   24.1,
+   "Escribe su entrega"
+  ]
+ ],
+ "seguimiento": [
+  [
+   4.5,
+   "Abre llamada.md"
+  ],
+  [
+   4.9,
+   "Abre crm.csv"
+  ],
+  [
+   5.3,
+   "Abre precios.md"
+  ],
+  [
+   5.3,
+   "Abre politicas.md"
+  ],
+  [
+   5.7,
+   "Abre agenda.md"
+  ],
+  [
+   6.3,
+   "Abre manual.md"
+  ],
+  [
+   29.0,
+   "Escribe su entrega"
+  ],
+  [
+   31.4,
+   "Escribe su entrega"
+  ]
+ ],
+ "facturas": [
+  [
+   5.3,
+   "Abre proveedores.md"
+  ],
+  [
+   5.7,
+   "Revisa la carpeta"
+  ],
+  [
+   6.9,
+   "Abre 01-nube-norte.xml"
+  ],
+  [
+   7.4,
+   "Abre 02-papeleria-los-arcos.xml"
+  ],
+  [
+   7.6,
+   "Abre 03-torre-ceibas-renta.xml"
+  ],
+  [
+   8.0,
+   "Abre 04-enlace-total.xml"
+  ],
+  [
+   8.4,
+   "Abre 05-limpieza-brillo.xml"
+  ],
+  [
+   8.5,
+   "Abre 06-papeleria-los-arcos-2.xml"
+  ],
+  [
+   30.0,
+   "Escribe su entrega"
+  ]
+ ],
+ "investigador": [
+  [
+   6.1,
+   "Abre investigacion.md"
+  ],
+  [
+   8.0,
+   "Busca en internet: AI agents accounting firms survey time saved results 2025 20"
+  ],
+  [
+   8.1,
+   "Busca en internet: generative AI accounting profession risks survey data privac"
+  ],
+  [
+   26.5,
+   "Lee karbonhq.com"
+  ],
+  [
+   26.6,
+   "Lee www.icas.com"
+  ],
+  [
+   43.5,
+   "Escribe su entrega"
+  ]
+ ]
+}

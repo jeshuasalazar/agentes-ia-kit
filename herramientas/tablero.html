@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Equipo de agentes</title>
+<style>
+@font-face{font-family:Poppins;src:url(/fuentes/poppins-400.woff2) format("woff2");font-weight:400}
+@font-face{font-family:Poppins;src:url(/fuentes/poppins-600.woff2) format("woff2");font-weight:600}
+@font-face{font-family:Poppins;src:url(/fuentes/poppins-700.woff2) format("woff2");font-weight:700}
+:root{--fondo:#F6F3EE;--papel:#fff;--tinta:#1B2A3A;--suave:#5E6B7A;--linea:#E3DDD3;--azul:#2E67AB;--arena:#E4CAB0;--ok:#1E8E5A;--alerta:#C2410C}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--fondo);color:var(--tinta);font-family:Poppins,system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden}
+header{display:flex;align-items:center;gap:24px;padding:22px 36px 12px}
+.marca{flex:1}
+.marca b{display:block;font-size:30px;font-weight:700;letter-spacing:-.5px}
+.marca span{color:var(--suave);font-size:17px}
+.reloj{font-size:58px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--azul);min-width:150px;text-align:right}
+.etiqueta{font-size:15px;color:var(--suave);text-align:right;line-height:1.3}
+main{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:18px;padding:10px 36px 18px;min-height:0}
+.carta{background:var(--papel);border-radius:22px;border:1px solid var(--linea);display:flex;flex-direction:column;overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s;position:relative}
+.carta:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(27,42,58,.10)}
+.barra{height:8px;background:var(--c)}
+.cab{padding:18px 20px 8px;display:flex;gap:12px;align-items:center}
+.num{width:42px;height:42px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-weight:700;font-size:20px;flex:none}
+.puesto{font-weight:700;font-size:21px;line-height:1.15}
+.llego{padding:0 20px 12px;color:var(--suave);font-size:15px;line-height:1.35}
+.llego b{color:var(--tinta);font-weight:600}
+.estado{margin:0 20px;padding:8px 12px;border-radius:12px;font-weight:600;font-size:16px;display:flex;align-items:center;gap:8px;background:#F1EEE8;color:var(--suave)}
+.trabaja .estado{background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c)}
+.listo .estado{background:#E7F5EE;color:var(--ok)}
+.punto{width:10px;height:10px;border-radius:50%;background:currentColor}
+.trabaja .punto{animation:late 1s infinite}
+@keyframes late{50%{opacity:.25;transform:scale(.7)}}
+.feed{list-style:none;padding:12px 20px;font-size:15px;line-height:1.35;color:var(--suave);display:flex;flex-direction:column;gap:6px;min-height:0;overflow:hidden;flex:1}
+.feed li{display:flex;gap:8px;animation:entra .35s ease-out}
+.feed li::before{content:"›";color:var(--c);font-weight:700}
+@keyframes entra{from{opacity:0;transform:translateY(6px)}}
+.decide{margin:0 14px 14px;padding:14px 16px;border-radius:16px;background:#FFF7EC;border:1px solid var(--arena);font-size:15px;line-height:1.4;display:none}
+.listo .decide{display:block;animation:entra .5s ease-out}
+.decide h4{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--alerta);margin-bottom:6px}
+.decide ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+.decide li{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;padding-left:16px;position:relative}
+.decide li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--alerta)}
+.listo .feed{flex:0 1 auto;max-height:84px}
+footer{padding:0 36px 22px;display:flex;justify-content:space-between;align-items:center;color:var(--suave);font-size:16px}
+.resumen{font-size:22px;color:var(--tinta);font-weight:600;opacity:0;transition:opacity .6s}
+.resumen.ver{opacity:1}
+.resumen em{font-style:normal;color:var(--azul)}
+.teclas{font-size:14px}
+.inicio{position:fixed;inset:0;display:grid;place-items:center;background:rgba(246,243,238,.0);pointer-events:none}
+.aviso{font-size:20px;color:var(--suave);text-align:center}
+/* Entrega completa */
+.velo{position:fixed;inset:0;background:rgba(27,42,58,.45);display:none;align-items:center;justify-content:center;padding:28px;z-index:5}
+.velo.ver{display:flex}
+.hoja{background:var(--papel);border-radius:24px;max-width:1280px;width:100%;max-height:100%;overflow:auto;padding:40px 56px;border-top:10px solid var(--c);font-size:21px;line-height:1.5}
+.hoja h1{font-size:34px;line-height:1.2;margin-bottom:8px}
+.hoja h2{font-size:24px;margin:26px 0 10px;color:var(--c)}
+.hoja h2.tu{color:var(--alerta)}
+.hoja h2.tu+ul{background:#FFF7EC;border:1px solid var(--arena);border-radius:16px;padding:16px 20px 16px 44px}
+.hoja p{margin:8px 0}
+.hoja ul,.hoja ol{margin:8px 0;padding-left:28px}
+.hoja li{margin:5px 0}
+.hoja blockquote{border-left:5px solid var(--c);background:#F7F9FC;padding:12px 20px;margin:12px 0;border-radius:0 12px 12px 0}
+.hoja table{border-collapse:collapse;margin:12px 0;font-size:18px;width:100%}
+.hoja th,.hoja td{border-bottom:1px solid var(--linea);padding:8px 10px;text-align:left;vertical-align:top}
+.hoja th{background:#F6F3EE;font-weight:600}
+.hoja code{background:#F1EEE8;padding:1px 6px;border-radius:6px;font-size:.9em}
+.hoja a{color:var(--azul);word-break:break-all}
+.hoja .meta{color:var(--suave);font-size:17px}
+@media (max-width:1500px){main{grid-template-columns:repeat(3,1fr);overflow:auto}.carta{min-height:420px}}
+@media (max-width:900px){main{grid-template-columns:1fr}header{flex-wrap:wrap}.reloj{font-size:40px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="marca"><b>Ceiba Contadores · martes por la mañana</b><span id="sub">Despacho ficticio · 5 agentes de IA · cada uno con su puesto, su manual y sus límites</span></div>
+  <div class="etiqueta" id="modo">Esperando el encargo<br>escribe <b>/arranca</b> en la terminal</div>
+  <div class="reloj" id="reloj">0:00</div>
+</header>
+<main id="tablero"></main>
+<footer>
+  <div class="resumen" id="resumen"></div>
+  <div class="teclas">1–5 abrir entrega · D ir a «Tú decides» · ← → · Esc cerrar</div>
+</footer>
+<div class="velo" id="velo"><article class="hoja" id="hoja"></article></div>
+
+<script>
+const COLORES = { atencion: "#2E67AB", prospectos: "#1E8E5A", seguimiento: "#7C4DCC", facturas: "#C27C0E", investigador: "#D2463C" };
+let estado = null, abierta = -1, replayInicio = null;
+const $ = (id) => document.getElementById(id);
+const mmss = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+const esc = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+// Markdown mínimo: títulos, negritas, listas, tablas, citas, enlaces y código.
+function enLinea(t) {
+  return esc(t)
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>")
+    .replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+    .replace(/(^|[\s(])(https?:\/\/[^\s)<]+)/g, '$1<a href="$2" target="_blank">$2</a>');
+}
+function md(texto) {
+  const L = texto.replace(/\r/g, "").split("\n"), out = [];
+  let i = 0;
+  while (i < L.length) {
+    const l = L[i];
+    if (/^```/.test(l)) { i++; const b = []; while (i < L.length && !/^```/.test(L[i])) b.push(esc(L[i++])); i++; out.push(`<pre><code>${b.join("\n")}</code></pre>`); continue; }
+    if (/^#\s/.test(l)) { out.push(`<h1>${enLinea(l.slice(2))}</h1>`); i++; continue; }
+    if (/^#{2,4}\s/.test(l)) { const t = l.replace(/^#+\s/, ""); out.push(`<h2${/t[uú] decides/i.test(t) ? ' class="tu"' : ""}>${enLinea(t)}</h2>`); i++; continue; }
+    if (/^\|/.test(l)) {
+      const filas = []; while (i < L.length && /^\|/.test(L[i])) filas.push(L[i++]);
+      const celdas = (f) => f.replace(/^\||\|$/g, "").split("|").map((c) => c.trim());
+      const cuerpo = filas.filter((f) => !/^\|\s*:?-{2,}/.test(f));
+      out.push("<table>" + cuerpo.map((f, k) => "<tr>" + celdas(f).map((c) => k === 0 ? `<th>${enLinea(c)}</th>` : `<td>${enLinea(c)}</td>`).join("") + "</tr>").join("") + "</table>");
+      continue;
+    }
+    if (/^>\s?/.test(l)) { const b = []; while (i < L.length && /^>/.test(L[i])) b.push(L[i++].replace(/^>\s?/, "")); out.push(`<blockquote>${b.map((x) => x ? enLinea(x) : "<br>").join("<br>")}</blockquote>`); continue; }
+    if (/^\s*[-*]\s/.test(l)) { const b = []; while (i < L.length && /^\s*[-*]\s/.test(L[i])) b.push(`<li>${enLinea(L[i++].replace(/^\s*[-*]\s/, ""))}</li>`); out.push(`<ul>${b.join("")}</ul>`); continue; }
+    if (/^\s*\d+\.\s/.test(l)) { const b = []; while (i < L.length && /^\s*\d+\.\s/.test(L[i])) b.push(`<li>${enLinea(L[i++].replace(/^\s*\d+\.\s/, ""))}</li>`); out.push(`<ol>${b.join("")}</ol>`); continue; }
+    if (!l.trim()) { i++; continue; }
+    out.push(`<p${/^\*\*Lo hizo/.test(l) ? ' class="meta"' : ""}>${enLinea(l)}</p>`); i++;
+  }
+  return out.join("");
+}
+function decisiones(texto) {
+  const m = texto.split(/^##\s*T[uú] decides.*$/mi)[1];
+  if (!m) return [];
+  return m.split("\n").filter((l) => /^\s*[-*]\s/.test(l)).map((l) => l.replace(/^\s*[-*]\s/, "").replace(/\*\*/g, ""));
+}
+
+function pintarCartas() {
+  $("tablero").innerHTML = estado.agentes.map((a, k) => `
+    <section class="carta" id="c${k}" style="--c:${COLORES[a.id]}" onclick="abrir(${k})">
+      <div class="barra"></div>
+      <div class="cab"><div class="num">${a.n}</div><div class="puesto">${a.puesto}</div></div>
+      <div class="llego">Llegó: <b>${a.llego}</b></div>
+      <div class="estado"><span class="punto"></span><span class="txt">Esperando</span></div>
+      <ul class="feed"></ul>
+      <div class="decide"><h4>Tú decides</h4><ul></ul></div>
+    </section>`).join("");
+}
+
+function actualizar(t) {
+  // t = segundos desde el arranque (null si aún no empieza)
+  let listos = 0;
+  estado.agentes.forEach((a, k) => {
+    const c = $("c" + k);
+    const hecho = t !== null && a.listo !== null && a.listo !== undefined && t >= a.listo && a.md;
+    const acciones = t === null ? [] : a.acciones.filter(([s]) => s <= t);
+    c.classList.toggle("trabaja", t !== null && !hecho);
+    c.classList.toggle("listo", !!hecho);
+    c.querySelector(".txt").textContent = t === null ? "Esperando" : hecho ? `Listo en ${mmss(a.listo)}` : "Trabajando…";
+    const feed = c.querySelector(".feed");
+    const vistas = acciones.slice(hecho ? -3 : -6).map(([, x]) => x);
+    const actual = [...feed.children].map((li) => li.textContent);
+    if (vistas.join("|") !== actual.join("|")) feed.innerHTML = vistas.map((x) => `<li>${esc(x)}</li>`).join("");
+    if (hecho) {
+      listos++;
+      const d = decisiones(a.md);
+      const ul = c.querySelector(".decide ul");
+      if (!ul.children.length) ul.innerHTML = (d.length ? d.slice(0, 3) : ["Revisa la entrega."]).map((x) => `<li>${esc(x)}</li>`).join("");
+    }
+  });
+  $("reloj").textContent = t === null ? "0:00" : mmss(fin ?? t);
+  if (listos === 5 && fin === null && t !== null) fin = Math.max(...estado.agentes.map((a) => a.listo));
+  if (listos === 5) {
+    const n = estado.agentes.reduce((s, a) => s + decisiones(a.md).length, 0);
+    $("resumen").innerHTML = `5 agentes en paralelo · <em>${mmss(fin)}</em> · 5 entregas · <em>${n}</em> decisiones para ti`;
+    $("resumen").classList.add("ver");
+    $("modo").innerHTML = "Equipo terminado<br>abre cada entrega con 1–5";
+  } else {
+    $("resumen").classList.remove("ver");
+  }
+}
+let fin = null;
+
+function abrir(k) {
+  const a = estado.agentes[k];
+  if (!a.md) return;
+  abierta = k;
+  $("hoja").style.setProperty("--c", COLORES[a.id]);
+  $("hoja").innerHTML = md(a.md);
+  $("hoja").scrollTop = 0;
+  $("velo").classList.add("ver");
+}
+function cerrar() { abierta = -1; $("velo").classList.remove("ver"); }
+$("velo").addEventListener("click", (e) => { if (e.target.id === "velo") cerrar(); });
+document.addEventListener("keydown", (e) => {
+  if (/^[1-5]$/.test(e.key)) abrir(+e.key - 1);
+  else if (e.key === "Escape") cerrar();
+  else if ((e.key === "d" || e.key === "D") && abierta >= 0) { const h = $("hoja").querySelector("h2.tu"); if (h) h.scrollIntoView({ behavior: "smooth" }); }
+  else if (e.key === "ArrowRight" && abierta >= 0) abrir((abierta + 1) % 5);
+  else if (e.key === "ArrowLeft" && abierta >= 0) abrir((abierta + 4) % 5);
+  else if (estado && estado.modo === "respaldo" && (e.key === "Enter" || e.key === " ") && abierta < 0) { replayInicio = performance.now(); fin = null; pintarCartas(); }
+  else if (estado && estado.modo === "respaldo" && (e.key === "r" || e.key === "R")) { replayInicio = null; fin = null; cerrar(); pintarCartas(); actualizar(null); $("modo").innerHTML = "Corrida grabada<br>Enter para arrancar"; }
+});
+
+async function ciclo() {
+  try {
+    const r = await fetch("/estado", { cache: "no-store" });
+    const nuevo = await r.json();
+    const primera = !estado;
+    estado = nuevo;
+    if (primera) {
+      pintarCartas();
+      // Atajos para ensayar: #t=40 salta a ese segundo de la grabación; #abrir=4 abre esa entrega.
+      const t = location.hash.match(/t=(\d+)/), ab = location.hash.match(/abrir=(\d)/);
+      if (t && estado.modo === "respaldo") replayInicio = performance.now() - +t[1] * 1000;
+      if (ab) setTimeout(() => abrir(+ab[1] - 1), 300);
+    }
+    if (estado.modo === "respaldo") {
+      if (primera) $("modo").innerHTML = "Corrida grabada<br>Enter para arrancar";
+      if (replayInicio !== null) { $("modo").innerHTML = "Trabajando en paralelo"; }
+      actualizar(replayInicio === null ? null : (performance.now() - replayInicio) / 1000);
+    } else {
+      if (estado.inicio) $("modo").innerHTML = "Trabajando en paralelo<br>sin que nadie los toque";
+      if (!estado.inicio) fin = null;
+      actualizar(estado.transcurrido);
+    }
+  } catch (e) { /* el servidor se reinicia: lo intentamos de nuevo */ }
+  setTimeout(ciclo, 400);
+}
+ciclo();
+</script>
+</body>
+</html>

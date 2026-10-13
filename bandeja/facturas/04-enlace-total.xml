@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CFDI 4.0 de EJEMPLO para la demostración. Empresas, RFC y folios son ficticios. -->
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="4.0" Serie="ET" Folio="88214" Fecha="2026-10-05T16:20:00" SubTotal="2100.00" Moneda="MXN" Total="2563.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PPD" FormaPago="99" LugarExpedicion="44100">
+  <cfdi:Emisor Rfc="ETT150830LM2" Nombre="ENLACE TOTAL TELECOM" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="CCO140215AB3" Nombre="CEIBA CONTADORES" DomicilioFiscalReceptor="44100" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="81112500" Cantidad="1" ClaveUnidad="E48" Descripcion="Internet empresarial y telefonía, octubre 2026" ValorUnitario="2100.00" Importe="2100.00" ObjetoImp="02">
+      <cfdi:Impuestos><cfdi:Traslados><cfdi:Traslado Base="2100.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="336.00"/></cfdi:Traslados></cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="336.00"><cfdi:Traslados><cfdi:Traslado Base="2100.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="336.00"/></cfdi:Traslados></cfdi:Impuestos>
+  <cfdi:Complemento><tfd:TimbreFiscalDigital Version="1.1" UUID="5B8F1D3C-7A26-4E94-A0C7-9D2E4F6B1A83" FechaTimbrado="2026-10-05T16:20:00"/></cfdi:Complemento>
+</cfdi:Comprobante>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CFDI 4.0 de EJEMPLO para la demostración. Empresas, RFC y folios son ficticios. -->
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="4.0" Serie="R" Folio="0310" Fecha="2026-10-01T09:00:00" SubTotal="18000.00" Moneda="MXN" Total="20880.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" FormaPago="03" LugarExpedicion="44100">
+  <cfdi:Emisor Rfc="TCI110120HG5" Nombre="TORRE CEIBAS INMOBILIARIA" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="CCO140215AB3" Nombre="CEIBA CONTADORES" DomicilioFiscalReceptor="44100" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="81112500" Cantidad="1" ClaveUnidad="E48" Descripcion="Renta de oficina, octubre 2026" ValorUnitario="18000.00" Importe="18000.00" ObjetoImp="02">
+      <cfdi:Impuestos><cfdi:Traslados><cfdi:Traslado Base="18000.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="2880.00"/></cfdi:Traslados></cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="2880.00"><cfdi:Traslados><cfdi:Traslado Base="18000.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="2880.00"/></cfdi:Traslados></cfdi:Impuestos>
+  <cfdi:Complemento><tfd:TimbreFiscalDigital Version="1.1" UUID="C9E3B5A7-0D14-4F62-B8A9-3E7C1D5F9024" FechaTimbrado="2026-10-01T09:00:00"/></cfdi:Complemento>
+</cfdi:Comprobante>

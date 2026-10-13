@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CFDI 4.0 de EJEMPLO para la demostración. Empresas, RFC y folios son ficticios. -->
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="4.0" Serie="LB" Folio="2290" Fecha="2026-10-08T11:05:00" SubTotal="3200.00" Moneda="MXN" Total="3712.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PPD" FormaPago="99" LugarExpedicion="44100">
+  <cfdi:Emisor Rfc="LBR190402PT6" Nombre="LIMPIEZA BRILLO" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="CCO140215AB8" Nombre="CEIBA CONTADORES" DomicilioFiscalReceptor="44100" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="81112500" Cantidad="1" ClaveUnidad="E48" Descripcion="Servicio de limpieza de oficina, septiembre 2026" ValorUnitario="3200.00" Importe="3200.00" ObjetoImp="02">
+      <cfdi:Impuestos><cfdi:Traslados><cfdi:Traslado Base="3200.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="512.00"/></cfdi:Traslados></cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="512.00"><cfdi:Traslados><cfdi:Traslado Base="3200.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="512.00"/></cfdi:Traslados></cfdi:Impuestos>
+  <cfdi:Complemento><tfd:TimbreFiscalDigital Version="1.1" UUID="E27A4C9B-1F83-4D56-9B0E-8C3A5D7F2E16" FechaTimbrado="2026-10-08T11:05:00"/></cfdi:Complemento>
+</cfdi:Comprobante>
