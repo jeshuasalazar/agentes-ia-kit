@@ -18,7 +18,8 @@ trap 'kill $TABLERO 2>/dev/null' EXIT
 sleep 0.8
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 if [ -x "$CHROME" ]; then
-  "$CHROME" --app="http://localhost:$PUERTO" --window-size=1600,1000 >/dev/null 2>&1 &
+  # Mitad izquierda de la pantalla: el tablero. La terminal va a la derecha (pantalla dividida).
+  "$CHROME" --app="http://localhost:$PUERTO" --window-position=0,0 --window-size=960,1080 >/dev/null 2>&1 &
 else
   open "http://localhost:$PUERTO"
 fi
