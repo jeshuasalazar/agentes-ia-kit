@@ -223,7 +223,7 @@ main{flex:1;min-height:0;display:grid;gap:10px;padding:10px 26px 8px;grid-templa
 <section class="cifras">
   <div><b id="k1">0</b><span>agentes en paralelo</span></div>
   <div><b id="k2">0:00</b><span>de principio a fin</span></div>
-  <div><b id="k3">$0</b><span>pesos de costo aprox.</span></div>
+  <div><b id="k3">US$0.00</b><span>dólares de costo (USD)</span></div>
   <div><b id="k4">0</b><span>decisiones para ti</span></div>
 </section>
 <div class="teclas">1–5 abrir · A aprobar · F documento · I impacto · Esc · B plan B</div>
@@ -409,14 +409,14 @@ function cuenta(el, hasta, ms, fmt, retraso = 0) {
     paso();
   }, retraso);
 }
-const costoMXN = () => Math.round(((estado && estado.costo_usd) || 0.87) * 18.5);  // costo medido de una corrida real
+const costoUSD = () => (estado && estado.costo_usd) || 0.87;  // costo medido de una corrida real, en dólares
 function cifras(ver, fin, decis) {
-  if (!ver) { if (cifrasHechas) { cifrasHechas = false; $("k1").textContent = "0"; $("k2").textContent = "0:00"; $("k3").textContent = "$0"; $("k4").textContent = "0"; } return; }
+  if (!ver) { if (cifrasHechas) { cifrasHechas = false; $("k1").textContent = "0"; $("k2").textContent = "0:00"; $("k3").textContent = "US$0.00"; $("k4").textContent = "0"; } return; }
   if (cifrasHechas) return;
   cifrasHechas = true;
   cuenta($("k1"), 5, 900, (v) => String(Math.round(v)));
   cuenta($("k2"), fin, 1300, (v) => mmss(v), 150);
-  cuenta($("k3"), costoMXN(), 1300, (v) => "≈ $" + Math.round(v), 300);
+  cuenta($("k3"), costoUSD(), 1300, (v) => "US$" + v.toFixed(2), 300);
   cuenta($("k4"), decis, 1300, (v) => String(Math.round(v)), 450);
 }
 
@@ -433,7 +433,7 @@ function mostrarImpacto() {
       <div class="carril humano"><div class="et"><span>Una persona, una tarea tras otra</span><b id="hh">0 min</b></div><div class="barra"><i id="bh"></i></div></div>
       <div class="carril agentes"><div class="et"><span>5 agentes al mismo tiempo</span><b>${mmss(fin)}</b></div><div class="barra"><i id="ba"></i></div></div>
     </div>
-    <div class="tres"><div style="animation-delay:2.6s"><b>≈ $${costoMXN()}</b><span>pesos por toda la mañana</span></div>
+    <div class="tres"><div style="animation-delay:2.6s"><b>US$${costoUSD().toFixed(2)}</b><span>dólares por toda la mañana</span></div>
       <div style="animation-delay:2.8s"><b>0</b><span>envíos o pagos sin tu permiso</span></div>
       <div style="animation-delay:3s"><b>${decis}</b><span>decisiones, todas tuyas</span></div></div>
     <div class="lucia">${img("lucia", 64)}<span>La C.P. Lucía no hizo el trabajo: <b>lo dirigió.</b></span></div>
