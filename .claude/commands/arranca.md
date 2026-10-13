@@ -1,5 +1,5 @@
 ---
-description: Arranca el día. Los 5 agentes trabajan en paralelo con lo que llegó a la bandeja y dejan su entrega en salidas/ para que tú decidas.
+description: Arranca el día. Los 5 agentes trabajan en paralelo con lo que llegó a la bandeja y resuelven al momento; a ti solo te llegan avisos.
 allowed-tools: Agent
 model: sonnet
 ---
@@ -14,5 +14,5 @@ NO leas archivos tú. En **UN SOLO mensaje**, lanza estas 5 tareas con la herram
 5. `investigador`: "Haz el encargo de `bandeja/investigacion.md`. Entrega en `salidas/5-investigador.md`."
 
 Cuando terminen los 5, responde SOLO esto (5 renglones, uno por agente, máximo 15 palabras cada uno) y una última línea:
-`<n>. <Puesto>: <qué entregó> → <la decisión que te deja>`
-`🧭 Tú decides: 🔴 <n> necesitan tu sí · 🟡 <n> salen solos a las 13:00 · 🟢 <n> ya hechos.`
+`<n>. <Puesto>: <qué hizo> → <el aviso más importante>`
+`📱 Te avisé: 🟢 <n> hechos al momento · 🟡 <n> en marcha (puedes deshacer) · 🔴 <n> de un toque.`

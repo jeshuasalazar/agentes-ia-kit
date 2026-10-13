@@ -73,7 +73,7 @@ Escribe:
 ```
 Los 5 trabajan **al mismo tiempo** con lo que hay en la carpeta `bandeja/`: un WhatsApp, 8 prospectos, las notas de una llamada, 6 facturas y un encargo de investigación. En menos de un minuto cada uno deja su trabajo en `salidas/`.
 
-Abre la carpeta `salidas/`. Cada archivo termina con **"Tú decides"**: ahí está lo único que te toca a ti.
+Abre la carpeta `salidas/`. Cada archivo termina con **"Te aviso"**: lo que el agente ya hizo (🟢), lo que está en marcha (🟡) y, solo si hay una excepción, la pregunta de sí o no que te toca (🔴). Nadie se quedó esperando tu revisión.
 
 > **Tablero visual (opcional, Mac):** sal con `/exit` y escribe `bash demo.sh`. Se abre el tablero en Chrome y Claude Code arranca. Escribe `/arranca` y mira a los 5 trabajar.
 

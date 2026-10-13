@@ -13,5 +13,7 @@
 - Antes de pagar: Subtotal + IVA trasladado − retenciones = Total. Si no cuadra, se aclara con el proveedor.
 - Si la factura es PPD (pago en parcialidades o diferido), al pagar pedimos su complemento de pago.
 - Una factura con un folio fiscal (UUID) repetido no se paga dos veces.
-- Pagamos martes y jueves. Ningún pago sale sin la autorización de la dueña.
+- Pagamos martes y jueves a las 13:00.
+- **Autorización permanente de la dueña:** una factura que cuadra al centavo, de un proveedor de esta lista y dentro del presupuesto, se programa sola. La dueña recibe el aviso y puede deshacerla antes de las 13:00.
+- Con error, duplicada, de un proveedor nuevo o fuera del presupuesto: no se paga. El correo de aclaración al proveedor sale solo.
 - Presupuesto de pagos de esta semana: **$40,000** (ejemplo).

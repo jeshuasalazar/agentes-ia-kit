@@ -20,8 +20,8 @@
 - Nunca pedimos ni recibimos contraseñas, e.firma, INE ni datos de tarjeta por chat o correo.
 - Se entregan en persona en la sesión de arranque o por la Bóveda Ceiba (portal seguro del despacho).
 
-## Lo decide la dueña (no se promete, se pregunta)
+## Un toque de la dueña
 - Cualquier descuento, mes gratis o precio especial.
-- Arranques en la misma semana o fuera de los huecos de la agenda.
-- Igualas mensuales mayores a $6,000 (ejemplo) antes de IVA.
+- Citas fuera de los huecos libres de la agenda.
 - Regularizaciones de más de 4 meses atrasados.
+Todo lo demás (cotizar con la lista, agendar en un hueco libre, decir que no a un descuento) el equipo lo resuelve al momento. Ver "Autoridad al momento" en `manual.md`.

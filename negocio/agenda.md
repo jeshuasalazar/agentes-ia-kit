@@ -9,6 +9,12 @@ Plazo: la declaración del mes vence el día 17; el arranque debe ser al menos 2
 - Lunes 19 de octubre: 9:00 y 12:00
 - Miércoles 21 de octubre: 11:00
 
+## Reparto de hoy (para que no choquen al trabajar al mismo tiempo)
+Cada agente aparta **solo** sus huecos; en tu negocio esto lo resuelve un calendario compartido.
+- Atención (clientes que escriben hoy): miércoles 14, 10:00
+- Prospectos: miércoles 14, 16:00 · lunes 19, 9:00 · miércoles 21, 11:00
+- Seguimiento: jueves 15, 12:00 · lunes 19, 12:00
+
 ## Ocupado
 - Viernes 16 de octubre: todo el día (cierre de declaraciones)
 

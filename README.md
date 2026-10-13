@@ -60,7 +60,12 @@ Cada agente es un archivo de texto en `.claude/agents/`. Contesta lo mismo que p
 2. **¿Cómo lo hace bien?** Su método paso a paso, en la sección "Cómo lo hace bien".
 3. **¿Qué nunca puede hacer?** Sus límites, en la sección "Nunca".
 
-Y siempre: **tú diriges.** Cada entrega termina con "Tú decides", y nada sale sin tu aprobación.
+Y siempre: **tú diriges, sin frenar a nadie.** Los agentes usan la **autoridad al momento** de `negocio/manual.md`:
+- 🟢 **Hecho al momento:** lo que está dentro de tu manual sale en el acto (el cliente que escribe a las 9:00 tiene respuesta a las 9:00) y solo te avisa.
+- 🟡 **En marcha:** lo programado, como pagos que cuadran al centavo, sale solo; lo deshaces con un toque.
+- 🔴 **Un toque:** solo las excepciones (descuentos, casos fuera de lo normal) te llegan como un sí o no. Si no contestas en 30 min, se aplica la opción segura.
+
+Cada entrega termina con **"Te aviso"**: los avisos que te llegarían al celular. En el tablero los ves bajar en vivo (tecla **N**: el celular).
 
 Para adaptarlo a tu negocio:
 1. Reemplaza `CLAUDE.md` (el manual) y la carpeta `negocio/` con tus precios, políticas, agenda y proveedores.

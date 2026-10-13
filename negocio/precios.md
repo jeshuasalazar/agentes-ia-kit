@@ -19,5 +19,5 @@
 - Pago adelantado de 12 meses: 12 mensualidades al mismo precio y la declaración anual incluida sin costo.
 - Cualquier descuento adicional sobre el plan anual lo decide la dueña.
 
-## Límite
-- Igualas mensuales (contabilidad + nómina) mayores a $6,000 (ejemplo) antes de IVA: las aprueba la dueña antes de enviarlas.
+## Cotizar
+- El equipo cotiza y envía al momento con esta lista, sin importar el monto: el precio de lista ya está aprobado.

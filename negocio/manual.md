@@ -19,26 +19,26 @@ Cercano, claro y profesional. Explicamos sin tecnicismos. Siempre cerramos con u
 2. Cotizamos con la lista de precios vigente.
 3. Agendamos la sesión de arranque y pedimos documentos.
 4. Enviamos una propuesta de una página y un mensaje corto por el canal del cliente.
-5. La dueña revisa todo antes de que salga.
+5. Todo sale al momento. A la dueña solo le llega el aviso (y un toque si hay una excepción).
 
-## Lo decide la dueña (no se promete, se pregunta)
+## Un toque de la dueña (excepciones reales, nada más)
 - Cualquier descuento, mes gratis o precio especial.
-- Arranques en la misma semana o fuera de los huecos de la agenda.
-- Igualas mensuales mayores a $6,000 (ejemplo) antes de IVA.
+- Citas fuera de los huecos libres de la agenda.
 - Regularizaciones de más de 4 meses atrasados.
-- Autorizar cualquier pago a proveedores.
+- Pagos a un proveedor nuevo, con error o fuera del presupuesto.
 - Cualquier excepción a las políticas.
 
-## Semáforo de aprobaciones (para que la dueña no esté pegada a la computadora)
-Cada acción de un agente cae en uno de tres colores. Nadie espera a la dueña para lo de rutina, y lo importante nunca sale sin ella.
+## Autoridad al momento: nadie espera a la dueña
+Si un cliente escribe a las 9:00, recibe respuesta a las 9:00. La dueña **no revisa en horarios**: le llegan **avisos al celular**.
+Cada acción cae en uno de tres colores:
 
-| Color | Qué significa | Ejemplos | Si la dueña no responde |
+| Color | Qué significa | Ejemplos | Aviso a la dueña |
 |---|---|---|---|
-| 🟢 **Lo hace solo** | Está dentro del manual y es de bajo riesgo. Queda registrado. | Responder con precios de lista, apartar un horario libre por 24 h, pedir documentos, actualizar el CRM, recordatorios. | No aplica: ya se hizo. |
-| 🟡 **Sale solo si no dices nada** | Es de rutina, pero toca dinero o a terceros. Se ejecuta en la siguiente hora de salida. La dueña puede vetarlo antes. | Pagos que cuadran al centavo a proveedores conocidos, hasta $25,000 (ejemplo) y dentro del presupuesto; correos a proveedores para aclarar una factura; mensajes a prospectos A. | Sale a la hora indicada. |
-| 🔴 **Necesita tu sí** | Todo lo de "Lo decide la dueña" y cualquier cosa con diferencias, datos personales o temas legales. | Descuentos, igualas > $6,000, pagar una factura con error, proveedor nuevo, regularizaciones. | **No se ejecuta nunca.** El agente le da al cliente o proveedor una respuesta segura ("lo confirmo y te respondo hoy antes de las 18:00") y la decisión vuelve a la siguiente revisión. |
+| 🟢 **Hecho al momento** | Está dentro del manual. Se ejecuta en el acto y queda registrado. | Responder y cotizar con la lista de precios (de cualquier monto), decir que no a un descuento con la política, apartar un hueco libre de la agenda, pedir documentos, correos a proveedores para aclarar una factura, mensajes a prospectos, actualizar el CRM. | "✅ Hecho". Solo informativo. |
+| 🟡 **En marcha, se puede deshacer** | Ya está programado y sale solo. La dueña puede detenerlo con un toque antes de que ocurra. | Pagos que cuadran al centavo a proveedores de la lista, dentro del presupuesto (autorización permanente de la dueña); correos con propuesta formal. | "⏳ Sale a las <hora> · Deshacer". |
+| 🔴 **Un toque** | Solo las excepciones de la lista de arriba. | Un descuento, una cita fuera de agenda, un proveedor nuevo. | "⚡ ¿Sí o no?" con la recomendación del agente. |
 
-**Ritmo de la dueña:** dos revisiones al día, **11:00 y 16:00, de 5 minutos**. Ahí aprueba los 🔴 y, si quiere, veta algún 🟡. Los 🟡 salen a las **13:00 y a las 18:00**.
-**Urgente:** solo si un cliente está esperando en vivo y algo 🔴 lo frena, se avisa al momento (un toque: sí / no). Mientras tanto, el cliente ya recibió la respuesta segura.
-**Si la dueña rechaza algo:** el agente aplica la alternativa segura (por ejemplo, el precio de lista sin descuento) y propone una regla nueva para este manual. Así cada decisión repetida deja de llegarle.
-
+**En un 🔴, el cliente nunca espera:** el agente le responde al momento con lo que sí puede dar (por ejemplo, el precio de lista y el beneficio del plan anual) y le dice que la excepción se la confirma en minutos.
+**Si la dueña no responde en 30 minutos**, se aplica sola la opción segura (sin descuento, el siguiente hueco libre, no se paga) y el cliente recibe su respuesta final.
+**Si la dueña dice que no dos veces a lo mismo**, el agente propone convertirlo en regla de este manual: cada semana le llegan menos toques.
+**Al cierre (18:00)** le llega un resumen de un minuto con todo lo que hicieron.

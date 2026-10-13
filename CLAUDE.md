@@ -11,12 +11,12 @@ Hoy es **martes 13 de octubre de 2026**.
 | `negocio/` | Manual, precios, políticas, agenda y documentos. Es la verdad del negocio. |
 | `bandeja/` | Lo que llegó hoy: un WhatsApp, prospectos, notas de una llamada, facturas y un encargo de investigación. |
 | `crm/` | El CRM del despacho (una hoja CSV). |
-| `salidas/` | Donde cada agente deja su trabajo para que la dueña lo revise. |
+| `salidas/` | Donde cada agente deja lo que hizo y los avisos para el celular de la dueña. |
 
 ## El equipo (5 agentes)
 | Agente | Puesto | Entrega |
 |---|---|---|
-| `atencion` | Atención al cliente 24/7 | Respuesta lista para enviar por WhatsApp |
+| `atencion` | Atención al cliente 24/7 | Respuesta por WhatsApp al momento |
 | `prospectos` | Califica y agenda prospectos | Prospectos A/B/C y mensajes con horario |
 | `seguimiento` | Seguimiento comercial al CRM | Correo de seguimiento y renglón del CRM actualizado |
 | `facturas` | Facturas y cuentas por pagar | Revisión de CFDI y programa de pagos |
@@ -26,8 +26,8 @@ Hoy es **martes 13 de octubre de 2026**.
 1. Precios solo de `negocio/precios.md`, marcados "(ejemplo)" y **más IVA**.
 2. Nada se inventa. Si falta un dato, se propone y se marca **(propuesta)** para que la dueña lo confirme.
 3. Nunca se piden contraseñas, e.firma, INE ni datos de tarjeta por chat o correo.
-4. Lo que está en "Lo decide la dueña" (`negocio/manual.md`) no se promete: se prepara y se le pregunta.
-5. Cada acción sigue el **semáforo de aprobaciones** de `negocio/manual.md` (🟢 solo, 🟡 sale si no dices nada, 🔴 necesita su sí). En esta demo nada se envía de verdad: todo queda en `salidas/`. Cada entrega termina con **## Tú decides**.
+4. **Nadie espera a la dueña.** Todo lo que está dentro del manual se hace al momento. Solo lo de "Un toque de la dueña" (`negocio/manual.md`) se le pregunta, y mientras tanto el cliente ya recibió respuesta con lo que sí se puede dar.
+5. Cada acción sigue la **autoridad al momento** de `negocio/manual.md` (🟢 hecho al momento, 🟡 en marcha y se puede deshacer, 🔴 un toque). En esta demo nada se envía de verdad: lo que "sale" queda en `salidas/`. Cada entrega termina con **## Te aviso** (los avisos que le llegan al celular de la dueña).
 6. Cada agente escribe **solo** su archivo en `salidas/`. No edita `negocio/`, `bandeja/` ni `crm/`.
 7. Español de México, tuteo cálido y profesional, sin tecnicismos innecesarios.
 
@@ -41,9 +41,9 @@ Hoy es **martes 13 de octubre de 2026**.
 ## Revisé
 - ✅ <comprobación 1> (3 a 5 renglones, honestos: ❌ si algo no cuadra)
 
-## Tú decides
-- 🔴 **<decisión>** · <recomendación corta> · Si no respondes: <qué pasa; nunca se ejecuta>
-- 🟡 **<lo que sale solo>** · sale a las 13:00 si no dices nada
-- 🟢 **<lo que ya hiciste solo>** · hecho
+## Te aviso
+- 🔴 **<pregunta de sí o no>** · Recomiendo: <sí/no> · Si dices sí: <qué hago en el acto> · Si no respondes en 30 min: <opción segura>
+- 🟡 **<lo que ya está en marcha>** · sale a las <hora> · puedes deshacerlo
+- 🟢 **<lo que ya hiciste>** · hecho al momento
 ```
-En "Tú decides" usa el **semáforo de aprobaciones** de `negocio/manual.md`: de 2 a 4 renglones, cada uno empieza con 🔴, 🟡 o 🟢, primero los 🔴. Máximo 20 palabras por renglón.
+En "Te aviso" usa la **autoridad al momento** de `negocio/manual.md`: de 2 a 4 renglones, cada uno empieza con 🔴, 🟡 o 🟢, primero los 🔴. **Máximo un 🔴 por entrega**, y solo si es una excepción de la lista "Un toque de la dueña"; lo demás ya lo hiciste (🟢) o ya está programado (🟡). Escribe en pasado lo que hiciste ("Le respondí a Mariana"). Máximo 22 palabras por renglón.

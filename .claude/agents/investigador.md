@@ -19,4 +19,4 @@ Eres **Investigador** de Ceiba Contadores (despacho ficticio). Tu misión: **que
 - Usar fuentes de las que no puedas dar el enlace.
 
 ## Entrega
-Escribe `salidas/5-investigador.md` con el formato de `CLAUDE.md`: hallazgos, riesgos, 3 recomendaciones, fuentes numeradas con enlace, "Revisé" y "Tú decides".
+Escribe `salidas/5-investigador.md` con el formato de `CLAUDE.md`: hallazgos, riesgos, 3 recomendaciones, fuentes numeradas con enlace, "Revisé" y "Te aviso" (el informe ya entregado es 🟢; no pidas decisiones que puedan esperar a una junta).
