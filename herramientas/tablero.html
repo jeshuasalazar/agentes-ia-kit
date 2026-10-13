@@ -44,6 +44,7 @@ main{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:18px;padding:10
 .decide li{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;padding-left:16px;position:relative}
 .decide li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--alerta)}
 .listo .feed{flex:0 1 auto;max-height:84px}
+.listo .feed li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
 footer{padding:0 36px 22px;display:flex;justify-content:space-between;align-items:center;color:var(--suave);font-size:16px}
 .resumen{font-size:22px;color:var(--tinta);font-weight:600;opacity:0;transition:opacity .6s}
 .resumen.ver{opacity:1}
@@ -69,7 +70,8 @@ footer{padding:0 36px 22px;display:flex;justify-content:space-between;align-item
 .hoja code{background:#F1EEE8;padding:1px 6px;border-radius:6px;font-size:.9em}
 .hoja a{color:var(--azul);word-break:break-all}
 .hoja .meta{color:var(--suave);font-size:17px}
-@media (max-width:1500px){main{grid-template-columns:repeat(3,1fr);overflow:auto}.carta{min-height:420px}}
+@media (max-width:1500px){header{padding:16px 24px 8px}main{gap:12px;padding:8px 24px 14px}.puesto{font-size:18px}.llego,.feed,.decide{font-size:13.5px}.cab{padding:14px 14px 6px}.llego{padding:0 14px 10px}.estado{margin:0 14px;font-size:14px}.feed{padding:10px 14px}.decide{margin:0 10px 10px;padding:12px}.num{width:34px;height:34px;font-size:17px}}
+@media (max-width:1150px){main{grid-template-columns:repeat(3,1fr);overflow:auto}.carta{min-height:420px}}
 @media (max-width:900px){main{grid-template-columns:1fr}header{flex-wrap:wrap}.reloj{font-size:40px}}
 </style>
 </head>
@@ -82,13 +84,13 @@ footer{padding:0 36px 22px;display:flex;justify-content:space-between;align-item
 <main id="tablero"></main>
 <footer>
   <div class="resumen" id="resumen"></div>
-  <div class="teclas">1–5 abrir entrega · D ir a «Tú decides» · ← → · Esc cerrar</div>
+  <div class="teclas">1–5 abrir entrega · D «Tú decides» · ← → · Esc cerrar · B plan B</div>
 </footer>
 <div class="velo" id="velo"><article class="hoja" id="hoja"></article></div>
 
 <script>
 const COLORES = { atencion: "#2E67AB", prospectos: "#1E8E5A", seguimiento: "#7C4DCC", facturas: "#C27C0E", investigador: "#D2463C" };
-let estado = null, abierta = -1, replayInicio = null;
+let estado = null, abierta = -1, replayInicio = null, planB = false;
 const $ = (id) => document.getElementById(id);
 const mmss = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
 const esc = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -193,13 +195,14 @@ document.addEventListener("keydown", (e) => {
   else if ((e.key === "d" || e.key === "D") && abierta >= 0) { const h = $("hoja").querySelector("h2.tu"); if (h) h.scrollIntoView({ behavior: "smooth" }); }
   else if (e.key === "ArrowRight" && abierta >= 0) abrir((abierta + 1) % 5);
   else if (e.key === "ArrowLeft" && abierta >= 0) abrir((abierta + 4) % 5);
+  else if ((e.key === "b" || e.key === "B") && !planB) { planB = true; estado = null; replayInicio = null; fin = null; cerrar(); }
   else if (estado && estado.modo === "respaldo" && (e.key === "Enter" || e.key === " ") && abierta < 0) { replayInicio = performance.now(); fin = null; pintarCartas(); }
   else if (estado && estado.modo === "respaldo" && (e.key === "r" || e.key === "R")) { replayInicio = null; fin = null; cerrar(); pintarCartas(); actualizar(null); $("modo").innerHTML = "Corrida grabada<br>Enter para arrancar"; }
 });
 
 async function ciclo() {
   try {
-    const r = await fetch("/estado", { cache: "no-store" });
+    const r = await fetch(planB ? "/estado?respaldo" : "/estado", { cache: "no-store" });
     const nuevo = await r.json();
     const primera = !estado;
     estado = nuevo;

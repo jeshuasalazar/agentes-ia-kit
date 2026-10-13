@@ -4,6 +4,7 @@
 Uso:
   python3 herramientas/tablero.py              en vivo: lee salidas/ y la bitácora de Claude Code
   python3 herramientas/tablero.py --respaldo   Plan B: repite la corrida grabada en ejemplos/
+                                               (en vivo también: tecla B en el tablero)
   python3 herramientas/tablero.py --grabar     guarda la última corrida (salidas/ + bitácora) en ejemplos/
 
 Solo usa la biblioteca estándar de Python. Abre http://localhost:4322
@@ -170,7 +171,7 @@ class Manejador(BaseHTTPRequestHandler):
     def do_GET(self):
         ruta = self.path.split("?")[0]
         if ruta == "/estado":
-            e = estado_respaldo() if RESPALDO else estado_vivo()
+            e = estado_respaldo() if (RESPALDO or "respaldo" in self.path) else estado_vivo()
             return self.enviar(json.dumps(e, ensure_ascii=False).encode(), "application/json; charset=utf-8")
         if ruta in ("/", "/index.html"):
             return self.enviar((HERR / "tablero.html").read_bytes(), "text/html; charset=utf-8")
