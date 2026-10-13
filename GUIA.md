@@ -40,7 +40,7 @@ Debe aparecer un número de versión.
 **Opción A, la más fácil:**
 1. Entra a **github.com/jeshuasalazar/agentes-ia-kit**.
 2. Haz clic en el botón verde **Code → Download ZIP**.
-3. Descomprime el archivo y mueve la carpeta `agentes-ia-kit` a tus Documentos.
+3. Descomprime el archivo. La carpeta se llama `agentes-ia-kit-main`: **renómbrala a `agentes-ia-kit`** y muévela a tus Documentos.
 
 **Opción B, con git:**
 ```

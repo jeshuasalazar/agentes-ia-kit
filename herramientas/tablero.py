@@ -205,7 +205,7 @@ def arrancar(modo):
 end tell''')
     else:
         log = open(KIT / "salidas" / ".ultima-corrida.log", "w")
-        subprocess.Popen(["claude", "-p", "/arranca", "--allowedTools", *HERRAMIENTAS], cwd=KIT, stdout=log, stderr=log,
+        subprocess.Popen(["claude", "-p", "/arranca", "--permission-mode", "acceptEdits", "--allowedTools", *HERRAMIENTAS], cwd=KIT, stdout=log, stderr=log,
                          start_new_session=True)
 
 

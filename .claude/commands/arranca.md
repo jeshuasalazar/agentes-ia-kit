@@ -15,4 +15,4 @@ NO leas archivos tú. En **UN SOLO mensaje**, lanza estas 5 tareas con la herram
 
 Cuando terminen los 5, responde SOLO esto (5 renglones, uno por agente, máximo 15 palabras cada uno) y una última línea:
 `<n>. <Puesto>: <qué entregó> → <la decisión que te deja>`
-`🧭 Tú decides: abre salidas/ y aprueba.`
+`🧭 Tú decides: 🔴 <n> necesitan tu sí · 🟡 <n> salen solos a las 13:00 · 🟢 <n> ya hechos.`

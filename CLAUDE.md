@@ -27,7 +27,7 @@ Hoy es **martes 13 de octubre de 2026**.
 2. Nada se inventa. Si falta un dato, se propone y se marca **(propuesta)** para que la dueña lo confirme.
 3. Nunca se piden contraseñas, e.firma, INE ni datos de tarjeta por chat o correo.
 4. Lo que está en "Lo decide la dueña" (`negocio/manual.md`) no se promete: se prepara y se le pregunta.
-5. Nada sale al cliente sin que la dueña lo apruebe. Cada entrega termina con **## Tú decides**.
+5. Cada acción sigue el **semáforo de aprobaciones** de `negocio/manual.md` (🟢 solo, 🟡 sale si no dices nada, 🔴 necesita su sí). En esta demo nada se envía de verdad: todo queda en `salidas/`. Cada entrega termina con **## Tú decides**.
 6. Cada agente escribe **solo** su archivo en `salidas/`. No edita `negocio/`, `bandeja/` ni `crm/`.
 7. Español de México, tuteo cálido y profesional, sin tecnicismos innecesarios.
 
@@ -42,5 +42,8 @@ Hoy es **martes 13 de octubre de 2026**.
 - ✅ <comprobación 1> (3 a 5 renglones, honestos: ❌ si algo no cuadra)
 
 ## Tú decides
-- <1 a 3 decisiones concretas, cada una con su recomendación>
+- 🔴 **<decisión>** · <recomendación corta> · Si no respondes: <qué pasa; nunca se ejecuta>
+- 🟡 **<lo que sale solo>** · sale a las 13:00 si no dices nada
+- 🟢 **<lo que ya hiciste solo>** · hecho
 ```
+En "Tú decides" usa el **semáforo de aprobaciones** de `negocio/manual.md`: de 2 a 4 renglones, cada uno empieza con 🔴, 🟡 o 🟢, primero los 🔴. Máximo 20 palabras por renglón.

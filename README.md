@@ -29,7 +29,7 @@ El ejemplo es **Ceiba Contadores**, un despacho contable **ficticio**. Todos sus
    git clone https://github.com/jeshuasalazar/agentes-ia-kit.git
    cd agentes-ia-kit
    ```
-   ¿No tienes git? En GitHub usa **Code → Download ZIP**, descomprímelo y entra a la carpeta.
+   ¿No tienes git? En GitHub usa **Code → Download ZIP**, descomprímelo, renombra la carpeta `agentes-ia-kit-main` a `agentes-ia-kit` y entra a ella.
 
 3. **Ábrelo en Claude Code**
    ```

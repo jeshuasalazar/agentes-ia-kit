@@ -1,60 +1,69 @@
-# Seguimiento Café Altura (Héctor Gómez)
+# Seguimiento a Café Altura (Héctor Gómez)
 **Lo hizo:** Seguimiento comercial · **Leyó:** bandeja/llamada.md, crm/crm.csv, negocio/precios.md, negocio/politicas.md, negocio/agenda.md, negocio/manual.md · **Para:** C.P. Lucía Ceballos
 
-## Correo listo (borrador, 117 palabras)
-**Asunto:** Propuesta para Café Altura y cuándo vernos esta semana
+## Correo listo
+
+**Para:** Héctor Gómez (Café Altura)
+**Asunto:** Tu propuesta y dos horarios para vernos esta semana
 
 Hola, Héctor:
 
-Gracias por la llamada de ayer. Me quedó claro que abrieron su segunda sucursal, que hoy son 5 personas y en diciembre serán 8. También que quieren contabilidad y nómina en un solo lugar, y que el precio les importa.
+Gracias por la llamada de ayer. Me contaste que abrieron su segunda sucursal, que hoy son 5 en el equipo, que serán 8 en diciembre y que ya les llegó una carta invitación del SAT. Conviene ordenarlo pronto.
 
-Con 45 facturas al mes y 5 empleados, tu propuesta queda en **$4,400 al mes + IVA** (contabilidad y nómina), con un arranque único de **$2,500 + IVA**. Con plan anual, la declaración anual va incluida. El detalle va en el archivo adjunto.
+Para Café Altura (persona moral, unas 45 facturas al mes):
+- Contabilidad mensual: $3,800 + IVA
+- Nómina de 5 empleados: $600 + IVA (con 8 en diciembre: $720 + IVA)
+- Arranque, un solo pago: $2,500 + IVA
 
-Podemos revisarla juntos, con Marisol si quieren, en cualquiera de estos horarios:
-- Miércoles 14 de octubre, 16:00
-- Jueves 15 de octubre, 12:00
+Son $4,400 + IVA al mes. Con plan anual, la declaración anual va incluida.
 
-¿Cuál te acomoda?
+Sé que el precio te importa. Cuando nos veamos te explico qué incluye cada parte.
+
+¿Nos vemos el miércoles 14 a las 16:00 o el jueves 15 a las 12:00? Si Marisol puede acompañarnos, mejor.
 
 Un abrazo,
 C.P. Lucía Ceballos · Ceiba Contadores
 
-## Propuesta (adjunta; precios de ejemplo, más IVA)
+*(Palabras del cuerpo: aprox. 125)*
+
+## Propuesta (precios de ejemplo, más IVA)
+
 | Concepto | Cálculo | Importe |
 |---|---|---|
-| Contabilidad mensual, persona moral hasta 50 facturas (45 al mes) | tarifa fija | $3,800 (ejemplo) |
-| Nómina quincenal, 5 empleados | 5 x $90 = $450, aplica el mínimo | $600 (ejemplo) |
-| **Mensualidad hoy** | $3,800 + $600 | **$4,400 + IVA** |
-| Arranque de cliente nuevo (pago único) | tarifa fija | $2,500 (ejemplo) |
-| **Primer pago, antes de la sesión de arranque** | $4,400 + $2,500 | **$6,900 + IVA** |
+| Contabilidad mensual, persona moral hasta 50 facturas | tarifa de lista | $3,800 |
+| Nómina quincenal, 5 empleados | 5 × $90 = $450, aplica mínimo | $600 |
+| **Mensualidad hoy** | 3,800 + 600 | **$4,400** |
+| Mensualidad desde diciembre (8 empleados) | 3,800 + (8 × $90 = $720) | $4,520 |
+| Arranque de cliente nuevo (pago único) | tarifa de lista | $2,500 |
+| **Primer pago (arranque + 1.ª mensualidad)** | 2,500 + 4,400 | **$6,900** (con IVA 16%: $8,004) |
+| Plan anual (propuesta) | 12 × $3,800 + 12 × $600 = 45,600 + 7,200 | $52,800 + arranque $2,500 = $55,300 |
 
-Referencias:
-- **Nómina con 8 empleados (diciembre):** 8 x $90 = $720, así que la mensualidad sube a $3,800 + $720 = **$4,520 + IVA**.
-- **Plan anual, solo contabilidad más nómina actual:** 12 x $4,400 = $52,800 + IVA, con la declaración anual incluida. Ese beneficio vale $4,500 (ejemplo) si se compra por separado. Si la nómina sube en diciembre, el monto del plan anual **(propuesta)** hay que confirmarlo.
-- **Contrato:** mínimo de 3 meses y después mes a mes, con aviso de 30 días. Las mensualidades se pagan por adelantado.
-- **Igualas:** la iguala ($4,400 y $4,520) queda por debajo del límite de $6,000, así que no necesita tu aprobación previa.
+Notas:
+- Plan anual: incluye la declaración anual, que sin plan cuesta $4,500 (persona moral).
+- La nómina de diciembre en el plan anual **(propuesta)** habría que ajustarla a 8 empleados. Lo defines tú.
+- Contrato mínimo de 3 meses, después mes a mes; cancelación con 30 días de aviso. Mensualidad por adelantado.
+- La iguala ($4,400 y $4,520) está por debajo del límite de $6,000, no requiere tu aprobación por monto.
 
 ## Renglón del CRM propuesto (CSV)
-Aplícalo cuando apruebes el correo. Cambia la etapa a "propuesta enviada" solo si el correo ya salió.
+
 ```csv
 id,empresa,contacto,etapa,valor_mensual_estimado,ultimo_contacto,siguiente_paso,fecha_siguiente_paso,notas
-102,Café Altura (ficticia),Héctor Gómez,propuesta enviada,4400,2026-10-13,Reunión para revisar propuesta con Héctor y su socia Marisol (si no contesta: llamar),2026-10-15,"Persona moral 45 facturas/mes; 5 empleados (8 en dic). Contabilidad + nómina. Pregunta por declaración anual: plan anual. Le preocupa el precio; su contadora actual le cobra $1500. Tiene carta invitación SAT. Decide con Marisol. Pendiente que Lucía revise la regularización."
+102,Café Altura (ficticia),Héctor Gómez,propuesta enviada,4400,2026-10-13,Reunión para cerrar (decide con su socia Marisol),2026-10-14,"Persona moral ~45 facturas; 5 empleados (8 en dic); carta invitación SAT; le preocupa precio (prima cobra $1,500); interesa plan anual por declaración incluida; sin descuento ofrecido"
 ```
 
-## Otros prospectos fuera de fecha
-- **103 Panadería San Juan (Elena Ruiz):** su fecha era el **9-oct** y ya pasaron 4 días sin respuesta desde la propuesta del 2-oct, con valor de $3,800. Es el más urgente. Sugiero llamar hoy o mañana y mandar un correo breve. Si quieres, preparo ese mensaje.
-- **101 Talleres Ibarra** y **102** (ya arreglado arriba): tenían el siguiente paso sin fecha.
-- **101 Talleres Ibarra (Rodrigo Ibarra):** el paso es "Calificar" y no tiene fecha. Sugiero calificarlo a más tardar mañana, 14-oct.
-- **104 Clínica Dental Salcedo:** llegó hoy y su paso "Calificar" no tiene fecha. No está atrasado, pero conviene ponerle fecha.
+## Otros prospectos pasados de fecha
+- **103 Panadería San Juan (Elena Ruiz):** su siguiente paso "Llamar para cerrar" era el 2026-10-09, lleva 4 días vencido y 11 sin contacto (último 2026-10-02). Propuesta: llamarle hoy y fijar nueva fecha 2026-10-14.
+- **101 Talleres Ibarra y 104 Clínica Dental Salcedo:** "Calificar" sin fecha. Aún no están vencidos, pero sin fecha pueden enfriarse. Propuesta: fecha 2026-10-14 para ambos.
 
 ## Revisé
-- ✅ Precios tomados de `negocio/precios.md`: $3,800 + $600 = $4,400; $4,400 + $2,500 = $6,900; 8 x $90 = $720 y $3,800 + $720 = $4,520; 12 x $4,400 = $52,800.
-- ✅ Los 5 empleados dan $450, menos que el mínimo de $600, por eso se cobra $600.
-- ✅ Los dos horarios (mié 14 a las 16:00 y jue 15 a las 12:00) están libres en `agenda.md`. No ofrecí el viernes 16, que está ocupado.
-- ✅ El correo tiene 117 palabras y pide una sola cosa (elegir horario). No iguala el precio de la prima ni da descuentos.
-- ❌ Falta un dato: no sé cuántos meses de atraso tiene Café Altura ni qué pide la carta invitación del SAT. El correo no promete nada sobre eso. Si son más de 4 meses atrasados, la regularización la decides tú.
+- ✅ Precios tomados de `negocio/precios.md` y sumas verificadas: 3,800 + 600 = 4,400; 2,500 + 4,400 = 6,900; ×1.16 = 8,004.
+- ✅ Nómina: 5 × $90 = $450 queda debajo del mínimo, se cobra $600; con 8 empleados, $720.
+- ✅ Horarios (mié 14 a las 16:00, jue 15 a las 12:00) están libres en `negocio/agenda.md`. El viernes 16 está ocupado.
+- ✅ Sin descuento ni igualar a la prima; solo prometí lo que dijiste: declaración anual incluida con plan anual.
+- ❌ Plazo: la declaración vence el 17 y el arranque debe ser 2 días hábiles antes. El miércoles 14 cumple; el jueves 15 queda justo. El pago de arranque debe llegar antes de la sesión.
 
 ## Tú decides
-- **Carta invitación del SAT y regularización:** no la incluí en el precio porque no sé el atraso. Recomiendo preguntarlo en la reunión (pedirles que traigan la carta) y cotizar la regularización después, a $1,500 (ejemplo) por mes atrasado.
-- **Arranque esta semana:** la declaración vence el sábado 17, así que el arranque tendría que ser el 14 o el 15, y eso lo decides tú. Recomiendo no prometerlo y proponer el arranque para el lunes 19, pues hay huecos a las 9:00 y las 12:00.
-- **Descuento o precio especial por el costo de $1,500 de la prima:** no lo ofrecí. Recomiendo defender el valor (nómina, 2 sucursales, declaración anual incluida) y no bajar el precio, salvo que tú decidas lo contrario.
+- 🔴 **Arranque esta misma semana (14 o 15 oct)** · Recomiendo sí, por la carta del SAT; por ahora el correo solo ofrece reunión · Si no respondes: no se promete
+- 🔴 **Descuento si Héctor lo pide por el precio de la prima** · Recomiendo no igualar; resaltar valor y plan anual · Si no respondes: precio de lista
+- 🟡 **Correo a Héctor con propuesta y dos horarios** · sale a las 13:00 si no dices nada
+- 🟢 **Revisé el CRM y detecté la Panadería San Juan vencida** · hecho; tú aplicas los cambios

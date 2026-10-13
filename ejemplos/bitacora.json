@@ -1,15 +1,15 @@
 {
  "atencion": [
   [
-   3.3,
+   3.6,
    "Abre whatsapp.md"
   ],
   [
-   3.6,
+   4.0,
    "Abre precios.md"
   ],
   [
-   4.0,
+   4.4,
    "Abre politicas.md"
   ],
   [
@@ -17,59 +17,59 @@
    "Abre agenda.md"
   ],
   [
-   4.4,
+   4.8,
    "Abre documentos.md"
   ],
   [
-   5.0,
+   5.4,
    "Abre manual.md"
   ],
   [
-   19.1,
+   20.7,
    "Escribe su entrega"
   ]
  ],
  "prospectos": [
   [
-   4.0,
+   4.1,
    "Abre manual.md"
   ],
   [
-   4.4,
+   4.5,
    "Abre precios.md"
   ],
   [
-   5.2,
+   5.3,
    "Abre agenda.md"
   ],
   [
-   5.2,
+   5.3,
    "Abre prospectos.csv"
   ],
   [
-   24.1,
+   23.1,
    "Escribe su entrega"
   ]
  ],
  "seguimiento": [
   [
-   4.5,
+   4.4,
    "Abre llamada.md"
   ],
   [
-   4.9,
+   4.8,
    "Abre crm.csv"
   ],
   [
-   5.3,
+   5.2,
    "Abre precios.md"
   ],
   [
-   5.3,
+   5.6,
    "Abre politicas.md"
   ],
   [
-   5.7,
+   5.6,
    "Abre agenda.md"
   ],
   [
@@ -77,49 +77,49 @@
    "Abre manual.md"
   ],
   [
-   29.0,
-   "Escribe su entrega"
-  ],
-  [
-   31.4,
+   37.0,
    "Escribe su entrega"
   ]
  ],
  "facturas": [
   [
-   5.3,
+   5.2,
    "Abre proveedores.md"
   ],
   [
-   5.7,
+   5.6,
    "Revisa la carpeta"
   ],
   [
-   6.9,
+   6.7,
+   "Busca «Lo decide la dueña|🟢|🟡|🔴|presupuesto»"
+  ],
+  [
+   7.8,
    "Abre 01-nube-norte.xml"
   ],
   [
-   7.4,
+   8.2,
    "Abre 02-papeleria-los-arcos.xml"
   ],
   [
-   7.6,
+   8.5,
    "Abre 03-torre-ceibas-renta.xml"
   ],
   [
-   8.0,
+   9.0,
    "Abre 04-enlace-total.xml"
   ],
   [
-   8.4,
+   9.2,
    "Abre 05-limpieza-brillo.xml"
   ],
   [
-   8.5,
+   9.4,
    "Abre 06-papeleria-los-arcos-2.xml"
   ],
   [
-   30.0,
+   30.5,
    "Escribe su entrega"
   ]
  ],
@@ -129,23 +129,35 @@
    "Abre investigacion.md"
   ],
   [
-   8.0,
-   "Busca en internet: AI agents accounting firms survey time saved results 2025 20"
+   6.7,
+   "Abre manual.md"
   ],
   [
-   8.1,
-   "Busca en internet: generative AI accounting profession risks survey data privac"
+   8.5,
+   "Busca en internet: AI agents accounting firms survey adoption time savings 2025"
   ],
   [
-   26.5,
-   "Lee karbonhq.com"
+   8.9,
+   "Busca en internet: IMCP inteligencia artificial despachos contables México encu"
   ],
   [
-   26.6,
-   "Lee www.icas.com"
+   9.0,
+   "Busca en internet: generative AI accounting risks confidentiality hallucination"
   ],
   [
-   43.5,
+   19.0,
+   "Lee scottishfinancialreview.com"
+  ],
+  [
+   19.7,
+   "Lee financial-cents.com"
+  ],
+  [
+   19.9,
+   "Lee www.bill.com"
+  ],
+  [
+   44.9,
    "Escribe su entrega"
   ]
  ]

@@ -1,10 +1,10 @@
 {
- "atencion": 19,
- "prospectos": 24,
- "seguimiento": 29,
- "facturas": 30,
- "investigador": 44,
- "total": 50,
+ "atencion": 21,
+ "prospectos": 23,
+ "seguimiento": 37,
+ "facturas": 31,
+ "investigador": 45,
+ "total": 51,
  "costo_usd": 0.87,
  "fecha": "2026-10-13"
 }
